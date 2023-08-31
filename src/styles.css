@@ -1,0 +1,54 @@
+
+body {
+    font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
+}
+
+.weather-container {
+    display: block;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    margin: 20px 0;
+    max-width: 800px;
+    padding: 20px 16px 24px 16px;
+    max-height: 800px;
+    margin: 0 auto;
+    background: radial-gradient(circle at 10% 20%, rgba(91, 173, 254, 0.46) 0%, rgba(91, 224, 254, 0.46) 47.2%, rgba(170, 254, 235, 0.43) 90%);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+h2 {
+
+    font-size: 30px;
+}
+
+.col-6 {
+    font-size: 20px;
+}
+
+.units {
+    font-size: 17px;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.temperature {
+
+    font-size: 50px;
+
+}
+
+#current {
+    background: #41d8bf;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
