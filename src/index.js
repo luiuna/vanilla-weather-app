@@ -30,7 +30,7 @@ currentDate.innerHTML = updateTime(dateElement);
 
 // search engine: a search bar with a button. When searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
 
-function handleSubmit(event) {
+function searchEngine(event) {
   event.preventDefault();
   let yourcity = document.querySelector("#city-input");
   
@@ -43,7 +43,7 @@ function handleSubmit(event) {
 }
 
 let form = document.querySelector("form");
-form.addEventListener("submit", handleSubmit);
+form.addEventListener("submit", searchEngine);
 
 //when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
 function displayTemperature(response) {
@@ -65,10 +65,17 @@ windDisplay.innerHTML = `Wind: ${wind}km/h`;
 let city = response.data.name;
 let cityDisplay = document.querySelector ("h2")
 cityDisplay.innerHTML = `${city}`;
-let icon = response.data.current.weather.icon;
-let showIcon = document.querySelector("#icon");
-showIcon.innerHTML = `${icon}`;
-}
+let iconElement = document.querySelector("#icon");
+
+ iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
+
+ }
 
 function retrievePosition(position) {
   let apiKey = "1a1a6bb4e25910414ad6e4a6f8bc9219";
