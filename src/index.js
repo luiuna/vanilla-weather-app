@@ -64,7 +64,10 @@ let windDisplay = document.querySelector ("#wind");
 windDisplay.innerHTML = `Wind: ${wind}km/h`;
 let city = response.data.name;
 let cityDisplay = document.querySelector ("h2")
-cityDisplay.innerHTML = `${city}`
+cityDisplay.innerHTML = `${city}`;
+let icon = response.data.current.weather.icon;
+let showIcon = document.querySelector("#icon");
+showIcon.innerHTML = `${icon}`;
 }
 
 function retrievePosition(position) {
@@ -87,3 +90,4 @@ navigator.geolocation.getCurrentPosition(retrievePosition);
 let button = document.querySelector("#current");
 button.addEventListener("click", currentBtn);
 
+// convert units
