@@ -27,7 +27,7 @@
             <div class="col-9 ">
                 <input type="text" id="city-input" placeholder="Enter a city.." class="form-control search-input">
             </div>
-            <div class="col-3 p-0"><input type="submit" class="btn btn-primary w-100" value="Search">
+            <div class="col-3 p-0"><input type="submit" class="btn btn-primary w-100" value="Search" id="searchButton">
             </div>
         </div>
     </form>
@@ -40,14 +40,15 @@
                         </br> <span class="temperature" id="temperature" class="float-left"> 20 </span>
                         <span class="units" class="float-left">
                             <a href="#" id="celsius-link">°C</a> |
-                            <a href="#" id="fahrenheit-link">°F</a>
+                            <a href="#" id="fahrenheit-link">°F</a> 
+                            </span>
                         <img src="" alt="Clear" id="icon" class="float-left" />
                     </div>
 
                     <div class="col-6" class="firstcolumn">
                     
                     </br>
-                        <ul>
+                        <ul id="rightcolumn">
                           <li id="current-time">Sunday 18:00 <li>
                           <li id="description"> Cloudy </li>
                         </ul>

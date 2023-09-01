@@ -42,14 +42,17 @@ function searchEngine(event) {
  
 }
 
-let form = document.querySelector("form");
-form.addEventListener("submit", searchEngine);
+
 
 //when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
 function displayTemperature(response) {
-  let currentTemperature = Math.round(response.data.main.temp);
+
+  celsiusTemperature = response.data.main.temp;
+  let currentTemperature = Math.round(celsiusTemperature);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = `${currentTemperature}`;
+
+   
 
   let description = response.data.weather[0].description;
   let currentDescription =document.querySelector("#description");
@@ -99,7 +102,33 @@ navigator.geolocation.getCurrentPosition(retrievePosition);
 
 
 
-let button = document.querySelector("#current");
-button.addEventListener("click", currentBtn);
 
 // convert units
+
+function showFahrenheitTemp(event) {
+event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+
+//global variables
+
+let fahrenheitLink = document.querySelector ("#fahrenheit-link");
+fahrenheitLink.addEventListener ("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector ("#celsius-link");
+celsiusLink.addEventListener ("click", showCelsiusTemp);
+
+let celsiusTemperature = null;
+
+let form = document.querySelector("form");
+form.addEventListener("submit", searchEngine);

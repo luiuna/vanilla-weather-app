@@ -22,20 +22,20 @@ border-radius: 30px 30px
 }
 
 
-h2 {
+.mainCity {
 
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .col-6 {
-    font-size: 20px;
     padding: 0px;
 }
 
 .units {
-    font-size: 17px;
+    font-size: 15px;
     vertical-align: top;
     font-weight: bold;
+   
 }
 
 #temperature {
@@ -56,17 +56,32 @@ form {
     display: block;
     padding-top: 20px;
     padding-left: 20px;
-    padding-right: 20px;
-    max-width: 500px;
+    padding-right: 30px;
+    max-width: 600px;
     text-align: center;
 }
 
 #signature {
 text-align: center;
+font-size: 12px;
+padding-bottom: 5px;
+
 }
 
 li {
     list-style: none;
     margin: 0;
     padding: 0;
+    font-size: 15px;
 }
+
+#celsius-link {
+cursor: default;
+}
+
+#fahrenheit-link {
+    cursor: default;
+}
+#searchButton {
+    cursor: default;
+    }
