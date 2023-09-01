@@ -29,6 +29,7 @@ h2 {
 
 .col-6 {
     font-size: 20px;
+    padding: 0px;
 }
 
 .units {
@@ -40,12 +41,8 @@ h2 {
 #temperature {
 
     font-size: 50px;
-
 }
 
-#current {
-    background: #41d8bf;
-}
 
 .container {
     width: 100%;
@@ -68,6 +65,8 @@ form {
 text-align: center;
 }
 
-.forecast {
-    padding-top: 10px;
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }

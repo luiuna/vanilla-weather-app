@@ -21,7 +21,7 @@
 <body>
     
     <br />
-    <div class="container">
+        <div class="container">
         <div class="weather-container">
     <form>
         <div class="row">
@@ -37,38 +37,41 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-6" class="firstcolumn">
-                        </br> <span class="temperature" id="temperature"> 20 </span>
-                        <span class="units">
+                    <div class="col-6" class="d-flex weather-temperature">
+                        </br> <span class="temperature" id="temperature" class="float-left"> 20 </span>
+                        <span class="units" class="float-left">
                             <a href="#" id="celsius-link">°C</a> |
                             <a href="#" id="fahrenheit-link">°F</a>
-                        </span>
-                    <div class="d-flex weather-temperature">
-                        <img src="" alt="Clear" id="icon" />
-                        <div>
+                        <img src="media/partly_cloudy.png" class="float-left" id="icon" />
                     </div>
 
                     <div class="col-6" class="firstcolumn">
-                        <span id="current-time">Sunday 18:00 </span><br /> <span id="description"> Cloudy </span>
+                    
+                    </br>
+                        <ul>
+                          <li id="current-time">Sunday 18:00 <li>
+                          <li id="description"> Cloudy </li>
+                        </ul>
                     </div>
 
                 </div>
                 <div class="row">
-                    <div class="col" id="feels-like">
+                    <ul>
+                        <li  id="feels-like">
                         Feels like: 20
-                    </div>
+                        </li>
 
-                    <div class="row">
-                        <div class="col" id="humidity">
+                        <li id="humidity">
+                        
                             Humidity: 70%
-                        </div>
-                        <div class="row">
-                            <div class="col" id="wind">
+                        </li>
+                        
+                        <li  id="wind">
                                 Wind: 11 km/h
-                            </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
+                
 
 
 
@@ -101,9 +104,11 @@
                 
                 
                 
+                
 
                 <script src="src/index.js"></script>
                 </div>
+        </div>
 </body>
 
 </html>
