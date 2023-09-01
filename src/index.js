@@ -50,28 +50,33 @@ function displayTemperature(response) {
   let currentTemperature = Math.round(response.data.main.temp);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = `${currentTemperature}`;
-  let description = response.data.weather[0].main;
+
+  let description = response.data.weather[0].description;
   let currentDescription =document.querySelector("#description");
   currentDescription.innerHTML = `${description}`;
+
  let feelsLike = Math.round(response.data.main.feels_like);
 let feelsLikeDisplay = document.querySelector ("#feels-like");
 feelsLikeDisplay.innerHTML = `Feels like: ${feelsLike}°C`;
+
 let humidity = response.data.main.humidity;
 let humidityDisplay = document.querySelector ("#humidity");
 humidityDisplay.innerHTML = `Humidity: ${humidity}%`;
+
 let wind = response.data.wind.speed;
 let windDisplay = document.querySelector ("#wind");
 windDisplay.innerHTML = `Wind: ${wind}km/h`;
+
 let city = response.data.name;
 let cityDisplay = document.querySelector ("h2")
 cityDisplay.innerHTML = `${city}`;
-let iconElement = document.querySelector("#icon");
 
- iconElement.setAttribute(
+let iconElement = document.querySelector("#icon");
+iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+iconElement.setAttribute("alt", response.data.weather[0].description);
 
   getForecast(response.data.coord);
 
