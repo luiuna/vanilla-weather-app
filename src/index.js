@@ -54,7 +54,7 @@ function displayTemperature(response) {
 
    
 
-  let description = response.data.weather[0].description;
+  let description = (response.data.weather[0].description).substring(0, 1).toUpperCase() + (response.data.weather[0].description).substring(1);
   let currentDescription =document.querySelector("#description");
   currentDescription.innerHTML = `${description}`;
 
@@ -70,7 +70,7 @@ let wind = response.data.wind.speed;
 let windDisplay = document.querySelector ("#wind");
 windDisplay.innerHTML = `Wind: ${wind}km/h`;
 
-let city = response.data.name;
+let city = (response.data.name).substring(0, 1).toUpperCase() + (response.data.name).substring(1);
 let cityDisplay = document.querySelector ("h2")
 cityDisplay.innerHTML = `${city}`;
 
