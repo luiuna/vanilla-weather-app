@@ -28,36 +28,48 @@ let currentDate = document.querySelector("#current-time");
 let dateElement = new Date();
 currentDate.innerHTML = updateTime(dateElement);
 
-//multiply the forecast 
+//format forecast day
+function formatForecastDate(timestamp) {
+let date = new Date(timestamp * 1000);
+let day = date.getDay();
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+return days[day];
+}
+
+
+//display the forecast 
+
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  let forecast = response.data.daily;
 
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
     forecastHTML =
       forecastHTML +
       `
       <div class="col-2">
-        <div class="forecast-date">${day}</div>
+        <div class="forecast-date">${formatForecastDate(forecastDay.time)}</div>
         <img
-          src="http://openweathermap.org/img/wn/50d@2x.png"
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png";
           alt=""
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="forecast-temperature-max"> 18° </span>
-          <span class="forecast-temperature-min"> 12° </span>
+          <span class="forecast-temperature-max"> ${Math.round(forecastDay.temperature.maximum)}° </span>
+          <span class="forecast-temperature-min"> ${Math.round(forecastDay.temperature.minimum)}° </span>
         </div>
       </div>
   `;
-  });
+}
+});
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
+ 
 }
+
 
 
 // search engine: a search bar with a button. When searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
