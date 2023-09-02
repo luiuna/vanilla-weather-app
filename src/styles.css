@@ -17,7 +17,7 @@ body {
     padding-left: calc(var(--bs-gutter-x)*.5);
     padding-right: calc(var(--bs-gutter-x)*.5);
     width: 100%;
-    background: radial-gradient(circle at 10% 20%, rgba(91, 173, 254, 0.46) 0%, rgba(91, 224, 254, 0.46) 47.2%, rgba(170, 254, 235, 0.43) 90%);
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 border-radius: 30px 30px
 }
 
