@@ -90,14 +90,11 @@ cursor: default;
         text-align: center;
         padding-left: 50px;
         padding-top: 20px;
+        font-size: 13px;
         
     }
 
-    .col-2 {
-        padding-right: 20px;
-        font-size: 13px;
-
-    }
+   
 
     .forecast-temperature-max {
         font-weight: bold;

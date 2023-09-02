@@ -23,17 +23,41 @@ function updateTime(date) {
   return `${day}, ${hours}:${minutes}`;
 }
 
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day];
-}
 
 let currentDate = document.querySelector("#current-time");
 let dateElement = new Date();
 currentDate.innerHTML = updateTime(dateElement);
+
+//multiply the forecast 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="forecast-date">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="forecast-temperature-max"> 18° </span>
+          <span class="forecast-temperature-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
 
 
 // search engine: a search bar with a button. When searching for a city (i.e. Paris), display the city name on the page after the user submits the form.
@@ -128,6 +152,12 @@ function showCelsiusTemp(event) {
 }
 
 
+
+
+
+
+
+
 //global variables
 
 let fahrenheitLink = document.querySelector ("#fahrenheit-link");
@@ -140,3 +170,6 @@ let celsiusTemperature = null;
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchEngine);
+
+displayForecast();
+
