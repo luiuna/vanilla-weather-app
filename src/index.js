@@ -57,7 +57,7 @@ function displayForecast(response) {
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="forecast-temperature-max"> ${Math.round(forecastDay.temperature.maximum)}° </span>
+          <span class="forecast-temperature-max" > ${Math.round(forecastDay.temperature.maximum)}° </span>
           <span class="forecast-temperature-min"> ${Math.round(forecastDay.temperature.minimum)}° </span>
         </div>
       </div>
@@ -132,7 +132,8 @@ iconElement.setAttribute(
   );
 iconElement.setAttribute("alt", response.data.condition.icon);
 
-  weatherForecast(response.data.city);
+
+weatherForecast(response.data.city);
 
  }
 
