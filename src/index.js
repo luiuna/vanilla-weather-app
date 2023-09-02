@@ -29,7 +29,7 @@ let dateElement = new Date();
 currentDate.innerHTML = updateTime(dateElement);
 
 //multiply the forecast 
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -66,35 +66,42 @@ function searchEngine(event) {
   event.preventDefault();
   let yourcity = document.querySelector("#city-input");
   
-  let apiKey = "1a1a6bb4e25910414ad6e4a6f8bc9219"
+  let apiKey = "aa443td2ed3a26cd6de4cd01fe8bo0b5"
   let units = "metric"
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${yourcity.value}&appid=${apiKey}&units=${units}`;
+  let url = `https://api.shecodes.io/weather/v1/current?query=${yourcity.value}&key=${apiKey}&units=${units}`;
   axios.get(url).then(displayTemperature);
   
  
 }
 
+// weather forecast API
 
+function weatherForecast(coordinates) {
+let apiKey = "aa443td2ed3a26cd6de4cd01fe8bo0b5";
+let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${coordinates}&key=${apiKey}`;
+console.log (apiUrl)
+axios.get(apiUrl).then(displayForecast);
+}
 
 //when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
 function displayTemperature(response) {
 
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = response.data.temperature.current;
   let currentTemperature = Math.round(celsiusTemperature);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = `${currentTemperature}`;
 
    
 
-  let description = (response.data.weather[0].description).substring(0, 1).toUpperCase() + (response.data.weather[0].description).substring(1);
+  let description = (response.data.condition.description).substring(0, 1).toUpperCase() + (response.data.condition.description).substring(1);
   let currentDescription =document.querySelector("#description");
   currentDescription.innerHTML = `${description}`;
 
- let feelsLike = Math.round(response.data.main.feels_like);
+ let feelsLike = Math.round(response.data.temperature.feels_like);
 let feelsLikeDisplay = document.querySelector ("#feels-like");
 feelsLikeDisplay.innerHTML = `Feels like: ${feelsLike}°C`;
 
-let humidity = response.data.main.humidity;
+let humidity = response.data.temperature.humidity;
 let humidityDisplay = document.querySelector ("#humidity");
 humidityDisplay.innerHTML = `Humidity: ${humidity}%`;
 
@@ -102,33 +109,33 @@ let wind = response.data.wind.speed;
 let windDisplay = document.querySelector ("#wind");
 windDisplay.innerHTML = `Wind: ${wind}km/h`;
 
-let city = (response.data.name).substring(0, 1).toUpperCase() + (response.data.name).substring(1);
+let city = (response.data.city).substring(0, 1).toUpperCase() + (response.data.city).substring(1);
 let cityDisplay = document.querySelector ("h2")
 cityDisplay.innerHTML = `${city}`;
 
 let iconElement = document.querySelector("#icon");
 iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
-iconElement.setAttribute("alt", response.data.weather[0].description);
+iconElement.setAttribute("alt", response.data.condition.icon);
 
-  getForecast(response.data.coord);
+  weatherForecast(response.data.city);
 
  }
 
+
+// get current location
 function retrievePosition(position) {
-  let apiKey = "1a1a6bb4e25910414ad6e4a6f8bc9219";
+  let apiKey = "aa443td2ed3a26cd6de4cd01fe8bo0b5";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   
-  let url2 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  let url2 = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(`${url2}`).then(displayTemperature);
 }
 
-function currentBtn() {
-  navigator.geolocation.getCurrentPosition(retrievePosition);
-  }
+
   
 navigator.geolocation.getCurrentPosition(retrievePosition);
 
@@ -154,10 +161,6 @@ function showCelsiusTemp(event) {
 
 
 
-
-
-
-
 //global variables
 
 let fahrenheitLink = document.querySelector ("#fahrenheit-link");
@@ -171,5 +174,5 @@ let celsiusTemperature = null;
 let form = document.querySelector("form");
 form.addEventListener("submit", searchEngine);
 
-displayForecast();
+
 
